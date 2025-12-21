@@ -46,7 +46,7 @@ router.route("/update/:id").put(async(req , res) =>{
 
     const update = await Student.findByIdAndUpdate(userId , updateStudent).then (()=>{
         //optional .. updated user name
-        res.status(200).send({status : "User Updated" , user:update})
+        res.status(200).send({status : "User Updated" })
     }).catch((err)=>{
         //show in frontend
         res.status(500).send({status : "Error with updating data" , error:err.message});       
@@ -70,12 +70,12 @@ router.route("/delete/:id").delete(async(req , res)=>{
 
 //-----------show onlu one student------------------
 
-router.route("/get/:id").get(async(rq ,res)=>{
-    let userId = req.param.id;
+router.route("/get/:id").get(async(req ,res)=>{
+    let userId = req.params.id;
 
     //findOne(email)
-    const user = await Student.findById(userId).then(()=>{
-        res.status(200).send({status :"user fetched" , user : user})
+    const user = await Student.findById(userId).then((student)=>{
+        res.status(200).send({status :"user fetched" , student})
     }).catch((err)=>{
         res.status(500).send({status :"Error with get user" , error : err.message})
     })
