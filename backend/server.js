@@ -24,10 +24,10 @@ mongoose.connect(URL)
 //mongo db load in port
 app.listen(PORT , ()=>{
     console.log(`Server is runnong in ${PORT}`);
-    
 });
 
     
+
     
     
     
