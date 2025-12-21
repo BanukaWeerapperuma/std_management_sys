@@ -5,6 +5,7 @@ const dotenv= require('dotenv');
 const cors = require('cors');  //This backend allows requests from that frontend.  Cross-Origin Resource Sharing
 require("dotenv").config();
 
+
 const app= express();
 
 const PORT = process.env.PORT || 5000;
@@ -20,6 +21,14 @@ const connection = mongoose.connection; // create connection
 mongoose.connect(URL)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error(err));
+
+//access student route
+const studentRouter = require('./routes/students.js');
+//route path and router (backend call /students)
+//excute student router http://localhost:5000/student
+app.use('/student', studentRouter);
+
+
 
 //mongo db load in port
 app.listen(PORT , ()=>{
