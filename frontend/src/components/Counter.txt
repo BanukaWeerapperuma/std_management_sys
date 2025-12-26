@@ -1,6 +1,6 @@
 import React , {useState} from "react";
 
-function CounterFun() {
+function Counter() {
 
      // Function component logic goes here
             // we cant define constroctor for give status
@@ -15,17 +15,21 @@ function CounterFun() {
             //we want to default "0" to useState
 
          let [number , setNumber] = useState(0)
+
+        function increment(){
+            setNumber(++number)
+        }
+
+
     return(
         <div>
-           
-            
+           <h3>functional Components</h3>
+           <h1>Counter = {number}</h1>
 
-            
-
+           <button onClick={ e => increment ()}>Increment</button>
         </div>
     )
 }
 
-
-const btn =document.getElementById("btn");
+export default Counter;
 
