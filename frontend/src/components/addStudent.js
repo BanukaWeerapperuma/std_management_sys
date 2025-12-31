@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios, { all } from "axios";
 
 
 function AddStudent() {
@@ -14,10 +15,13 @@ function AddStudent() {
             alert("sendData!");
 
             const newStudent ={name , age , gender }
-
             console.log(newStudent);
-            
 
+            //object send to Backend url , pass obj
+            axios
+              .post("http://localhost:5000/student/add" , newStudent)
+              .then(() => {alert ("add student")})
+              .catch(err => console.error(err));
 
     }
 
